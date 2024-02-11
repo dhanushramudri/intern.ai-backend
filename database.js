@@ -11,783 +11,28 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 
-const dummyData = [
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 2,
-
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 3,
-
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 4,
-
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 5,
-
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-  {
-    id: 1,
-    company_name: "Storable Careers - One Posting",
-    job_title: "Sr. Financial Analyst",
-    city: "United States",
-    country: ["United States"],
-    job_category: ["Accounting, Payroll & Financial Planning Jobs"],
-    job_type: ["Full Time"],
-    location_type: ["In-Person"],
-    description: "<div> ... (omitted for brevity) ... </div>",
-    years_of_experience: {
-      $numberInt: "3",
-    },
-    salary: null,
-    date_posted: "2023-10-18",
-    application_link:
-      "https://boards.greenhouse.io/embed/job_app?for=storablecareers&token=5001974004",
-    company_link: "www.storable.com",
-    company_logo:
-      "https://s4-recruiting.cdn.greenhouse.io/external_greenhouse_job_boards/logos/400/912/600/resized/LinkedIn_Posting_GH_Job_Board_(537_×_293_px)_(1).png?1677260086",
-    job_board: "Greenhouse",
-    job_board_link:
-      "https://boards.greenhouse.io/embed/job_board?for=storablecareers",
-    promoted: null,
-    expired_date: null,
-    us_state: null,
-    requirements_summary:
-      "3+ years Finance/FP&A, Consulting, or Investment Banking experience. BS/BA Degree in Finance, Accounting, Economics, Business or equivalent work experience. Inquisitive nature, strong financial modeling & communication skills, ability to manage multiple projects",
-    yoe_range: {
-      min: {
-        $numberInt: "3",
-      },
-      max: {
-        $numberInt: "3",
-      },
-    },
-    date_posted_parsed: {
-      $date: {
-        $numberLong: "1697587200000",
-      },
-    },
-    date_posted_epoch: {
-      $numberDouble: "1697587200.0",
-    },
-  },
-];
-
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
 });
+
+const jobSchema = new mongoose.Schema({
+  job_title: String,
+  company_name: String,
+  location: String,
+  job_description: String,
+  requirements: String,
+  company_logo_url: String,
+  job_details_keywords: [String],
+  job_details_links: {
+    website: String,
+    linkedin: String,
+    all_job_openings: String,
+  },
+});
+
+const Job = mongoose.model("Job", jobSchema);
 
 // Use function keyword to allow binding 'this'
 userSchema.methods.comparePassword = async function (candidatePassword) {
@@ -849,12 +94,25 @@ app.post("/login", async (req, res) => {
 app.get("/products", (req, res) => {
   res.json(dummyData);
 });
+app.get("/scrape-and-save", async (req, res) => {
+  try {
+    // Retrieve the jobs from MongoDB or any other storage
+    const jobs = await Job.find(); // Assuming you are using Mongoose and have a Job model
+
+    // Send the jobs as the response
+    res.json(jobs);
+  } catch (error) {
+    console.error(`Error fetching jobs: ${error.message}`);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
 const PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+// console.log(process.env.MONGODB_URI);
 
 mongoose.connect(process.env.MONGODB_URI, {
   // useNewUrlParser: true,
@@ -871,4 +129,30 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");
+});
+
+app.post("/scrape-and-save", async (req, res) => {
+  try {
+    const all_jobs_data = req.body; // Assuming the scraped data is sent in the request body
+
+    // Save the scraped jobs to MongoDB
+    if (all_jobs_data.length > 0) {
+      all_jobs_data.forEach(async (jobData) => {
+        try {
+          const job = new Job(jobData);
+          await job.save();
+          console.log(`Job saved to MongoDB: ${jobData.job_title}`);
+        } catch (error) {
+          console.error(`Error saving job to MongoDB: ${error.message}`);
+        }
+      });
+
+      res.json({ message: "Scraped jobs saved to MongoDB successfully" });
+    } else {
+      res.json({ message: "No job items to save." });
+    }
+  } catch (error) {
+    console.error(`An error occurred during scraping and saving: ${error}`);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 });
