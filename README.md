@@ -1,1 +1,1 @@
-This is the backend for the intern.ai
+This is the backend for the intern.ai website
