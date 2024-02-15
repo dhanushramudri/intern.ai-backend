@@ -45,7 +45,7 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 
 const User = mongoose.model("User", userSchema);
 app.get("/", (req, res) => {
-  res.send("Hello, this is the backend page");
+  res.send("Hello, Backend working successfully");
 });
 
 app.post("/signup", async (req, res) => {
