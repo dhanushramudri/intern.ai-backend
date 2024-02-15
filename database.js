@@ -91,9 +91,7 @@ app.post("/login", async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error" });
   }
 });
-app.get("/products", (req, res) => {
-  res.json(dummyData);
-});
+
 app.get("/scrape-and-save", async (req, res) => {
   try {
     // Retrieve the jobs from MongoDB or any other storage

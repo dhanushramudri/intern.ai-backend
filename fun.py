@@ -4,7 +4,7 @@ import json
 
 import requests
 
-url = "https://joby.ai/?sort=Relevance-and-Date&page=4"
+url = "https://joby.ai/?sort=Relevance-and-Date&page=2"
 
 # Use a headless browser to simulate a user
 options = webdriver.ChromeOptions()
